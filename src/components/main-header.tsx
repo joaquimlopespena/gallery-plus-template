@@ -6,6 +6,8 @@ import cx from "classnames";
 import Button from "./button";
 import PhotosSearch from "./photos-search";
 import Divider from "./divider";
+import PhotoNewDialog from "../contexts/photos/components/photo-new-dialog";
+import AlbumNewDialog from "../contexts/albums/components/album-new-dialog";
 
 interface MainHeaderProps extends ComponentProps<typeof Container> {}
 
@@ -19,8 +21,10 @@ export default function MainHeader({className, ...props}: MainHeaderProps) {
             <Divider orientation="vertical" className="h-10" />
 
             <div className="flex items-center gap-3">
-                <Button >Nova foto</Button>
-                <Button variant="secondary">Criar album</Button>
+                <PhotoNewDialog trigger={<Button>Nova foto</Button>} />
+                <AlbumNewDialog
+          trigger={<Button variant="secondary">Criar álbum</Button>}
+        />
             </div>
         </Container>
     );
