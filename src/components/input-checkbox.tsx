@@ -58,7 +58,7 @@ export const inputCheckboxIconVariants = tv({
 
 interface InputCheckboxProps
   extends VariantProps<typeof inputCheckboxVariants>,
-    Omit<React.ComponentProps<"input">, "size" | "disabled"> {}
+    Omit<React.ComponentProps<"input">, "size"> {}
 
 
 
@@ -70,10 +70,10 @@ export default function InputCheckbox({
   ...props
 }: InputCheckboxProps) {
   return (
-    <label className={InputCheckboxVariantProps({ className })}>
+    <label className={inputCheckboxVariants({ className, disabled })}>
       <input
         type="checkbox"
-        className={inputCheckboxVariants({ variant, size, disabled })}
+        className={inputCheckboxVariants({ variant, size })}
         {...props}
       />
       <Icon svg={CheckIcon} className={inputCheckboxIconVariants({ size })} />

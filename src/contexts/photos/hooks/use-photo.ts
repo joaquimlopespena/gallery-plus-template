@@ -3,12 +3,14 @@ import { api, fetcher } from "../../../helpers/api";
 import type { Photo } from "../models/photo";
 import type { PhotoNewForm } from "../schemas";
 import { toast } from "sonner";
+import usePhotoAlbums from "../../albums/hooks/use-photo-albums";
 interface PhotoDetailResponse extends Photo {
     nextPhotoId?: string;
     previousPhotoId?: string;
 }
 
 export default function usePhoto(id?: string) {
+    const { managePhotoOnAlbum } = usePhotoAlbums();
     const {
         data,
         isLoading
@@ -40,9 +42,7 @@ export default function usePhoto(id?: string) {
             );
 
             if (payload.albumsIds && payload.albumsIds.length > 0) {
-                await api.put(`/photos/${photo.id}/albums`, {
-                    albumsIds: payload.albumsIds,
-                });
+                await managePhotoOnAlbum(photo.id, payload.albumsIds);
             }
 
             queryClient.invalidateQueries({ queryKey: ["photos"] });
