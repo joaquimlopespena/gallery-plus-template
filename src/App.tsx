@@ -7,6 +7,7 @@ import PageHome from "./pages/page-home";
 import PagePhotoDetails from "./pages/page-photo-details";
 import { useForm } from "react-hook-form";
 import { NuqsAdapter } from 'nuqs/adapters/react-router/v7'
+import { Toaster } from "sonner";
 
 const queryClient = new QueryClient();
 
@@ -15,10 +16,11 @@ export default function App() {
   const form = useForm();
   const file = form.watch("file");
   const fileSrc = file?.[0] ? URL.createObjectURL(file[0]) : undefined;
-  
+
   return (
     <QueryClientProvider client={queryClient}>
       <NuqsAdapter>
+        <Toaster position="bottom-center" />
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<LayoutMain />}>
@@ -31,5 +33,5 @@ export default function App() {
       </NuqsAdapter>
     </QueryClientProvider>
 
-	);
+  );
 }
