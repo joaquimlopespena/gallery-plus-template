@@ -15,7 +15,11 @@ export default function PhotoWidget({ photo, loading }: PhotoWidgetProps) {
     return (
         <div className="flex flex-col gap-4">
             {!loading ? (
-                <ImagePreview src={photo.imageId} alt={photo.title} imageClassName="w-43.5 h-43.5 rounded-lg" />
+                <ImagePreview 
+                    src={`${import.meta.env.VITE_IMAGES_URL}/${photo.imageId}`} 
+                    alt={photo.title} 
+                    imageClassName="w-43.5 h-43.5 rounded-lg"
+                />
             ) :
                 <Skeleton rounded="lg" className="w-43.5 h-43.5 rounded-lg" />
             }
