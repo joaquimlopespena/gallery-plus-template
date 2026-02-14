@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "build-server": "tsc --noEmit -p tsconfig.server.json && tsup",
     "dev-server": "tsup --watch --onSuccess \"node server/dist/main.js\"",
-    "run-server": "node server/dist/main.js"
+    "server": "node server/dist/main.js"
   },
   "dependencies": {
     "@fastify/cors": "8.5.0",
@@ -18,6 +18,7 @@
     "@fastify/static": "^7.0.0",
     "@hookform/resolvers": "^5.2.2",
     "@tailwindcss/vite": "^4.1.10",
+    "axios": "^1.13.5",
     "classnames": "^2.5.1",
     "fastify": "^4.24.3",
     "radix-ui": "^1.4.3",
